@@ -16,9 +16,10 @@ client.on('ready', () => {
 client.on('message', msg => {
   if (msg.content === '!invoke') {
     angel = angels[Math.floor(Math.random() * angels.length)];
+    var attachment = new MessageAttachment(angel.image);
     try{
-      var attachment = new MessageAttachment(angel.image);
       msg.channel.send(`${msg.member} invoked ${angel.name} from the Angelarium - They are ${angel.description}`, attachment);  
+      console.log(`Success on ${angel.name}`);
     } catch (err) {
       console.log(err);
     } 
